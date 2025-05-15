@@ -14,7 +14,7 @@ router.get('/getJobs', async (req, res) => {
 
 // POST /users
 router.post('/addJob', async (req, res) => {
-  const { title, position, location } = req.body;
+  const { title, position, location,jobreferenceid } = req.body;
   try {
     const result = await db.query(
       'INSERT INTO jobs (title, position, location,jobreferenceid) VALUES ($1, $2, $3,$4) RETURNING *',
