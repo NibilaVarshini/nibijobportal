@@ -5,6 +5,7 @@ const db = require('../db');
 // GET /users
 router.get('/getUser', async (req, res) => {
   try {
+    
     const result = await db.query('SELECT * FROM users');
     res.json(result.rows);
   } catch (err) {

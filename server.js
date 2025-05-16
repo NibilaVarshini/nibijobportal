@@ -8,6 +8,7 @@ const userRoutes = require('./routes/users');
 const jobRoutes = require('./routes/jobs');
 const candidateRoutes = require('./routes/candidate');
 
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
