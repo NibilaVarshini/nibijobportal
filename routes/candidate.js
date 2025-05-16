@@ -20,7 +20,7 @@ router.post('/addCandidate', async (req, res) => {
             'INSERT INTO candidate (name, email, phone, joboppeningid) VALUES ($1, $2, $3, $4) RETURNING id',
             [name, email, phone, jobreferenceid]
         );
-        const candidateId = candidateResult.rows[0].id;
+        const candidateId = candidateResult.rows[0].id; 
 
         // Insert education details (handles one or more items)
         if (Array.isArray(educationDetails) && educationDetails.length > 0) {
