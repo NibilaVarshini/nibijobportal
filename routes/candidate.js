@@ -17,8 +17,8 @@ router.post('/addCandidate', async (req, res) => {
         const { name, email, phone, jobreferenceid,linkedin,educationDetails,experienceDetails } = req.body;
         // Insert candidate basic details
         const candidateResult = await db.query(
-            'INSERT INTO candidate (name, email, phone, joboppeningid,) VALUES ($1, $2, $3, $4,$5) RETURNING id',
-            [name, email, phone, jobreferenceid,linkedin]
+            'INSERT INTO candidate (name, email, phone, joboppeningid, linkedin) VALUES ($1, $2, $3, $4, $5) RETURNING id',
+            [name, email, phone, jobreferenceid, linkedin]
         );
         const candidateId = candidateResult.rows[0].id; 
 
