@@ -27,4 +27,24 @@ router.post('/addJob', async (req, res) => {
   }
 });
 
+
+// DELETE /jobs/:jobopeningid
+router.delete('/deleteJob/:jobopeningid', async (req, res) => {
+  const { jobopeningid } = req.params;
+  try {
+    const result = await db.query(
+      'DELETE FROM jobs WHERE jobopeningid = $1 RETURNING *',
+      [jobopeningid]
+    );
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+    res.json({ message: 'Job deleted successfully', job: result.rows[0] });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
 module.exports = router;
