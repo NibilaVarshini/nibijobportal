@@ -29,12 +29,12 @@ router.post('/addJob', async (req, res) => {
 
 
 // DELETE /jobs/:jobopeningid
-router.delete('/deleteJob/:jobopeningid', async (req, res) => {
-  const { jobopeningid } = req.params;
+router.delete('/deleteJob/:jobreferenceid', async (req, res) => {
+  const { jobreferenceid } = req.params;
   try {
     const result = await db.query(
-      'DELETE FROM jobs WHERE jobopeningid = $1 RETURNING *',
-      [jobopeningid]
+      'DELETE FROM jobs WHERE jobreferenceid = $1 RETURNING *',
+      [jobreferenceid]
     );
     if (result.rowCount === 0) {
       return res.status(404).json({ error: 'Job not found' });
